@@ -25,7 +25,10 @@
 </head>
 <body style="background-color:lightcyan">
 
+<h3>
+The current weather in Tashkent is:
 ${weather}
+</h3>
 
 
 

@@ -23,7 +23,7 @@ public class HomeController {
 }
 
 @RequestMapping(value ="login",method = RequestMethod.GET)
-public String Login(@ModelAttribute User user,Model model){
+public String Login(@ModelAttribute("user") User user,Model model){
     for (User u:repository.findAll()){
         if(u.getId()==user.getId()){
             return "logged-in.jsp";
@@ -33,59 +33,63 @@ public String Login(@ModelAttribute User user,Model model){
 }
 @RequestMapping(value = "weather",method = RequestMethod.GET)
     public String getWeather(@ModelAttribute User user, Model model){
-//    for(User u:repository.findAll()){
-//        if(u.getId()==user.getId()){
-            WeatherCon weatherCon=new WeatherCon();
-            model.addAttribute("weather",weatherCon.getWeather());
+    for(User u:repository.findAll()) {
+        if (u.getId() == user.getId()) {
+            WeatherCon weatherCon = new WeatherCon();
+            model.addAttribute("weather", weatherCon.getWeather());
             return "CurrentWeather.jsp";
         }
-
+      }
+        return "index.jsp";
+    }
     @RequestMapping(value = "weather-coord",method = RequestMethod.GET)
         public String getCoords(@ModelAttribute User user, Model model){
-//    for(User u:repository.findAll()){
-//        if(u.getId()==user.getId()){
+    for(User u:repository.findAll()){
+        if(u.getId()==user.getId()){
         WeatherCon weatherCon=new WeatherCon();
         model.addAttribute("weather",weatherCon.getCoord() );
         return "CurrentWeather.jsp";
-//        }
-//    }
-//    rreturn "index.jsp";
+        }
+    }
+    return "index.jsp";
     }
 
     @RequestMapping(value = "weather-main",method = RequestMethod.GET)
         public String getMain(@ModelAttribute User user, Model model){
-//    for(User u:repository.findAll()){
-//        if(u.getId()==user.getId()){
+    for(User u:repository.findAll()){
+        if(u.getId()==user.getId()){
         WeatherCon weatherCon=new WeatherCon();
         model.addAttribute("weather",weatherCon.getMain() );
         return "CurrentWeather.jsp";
-//        }
-//    }
-//    rreturn "index.jsp";
+        }
+    }
+    return "index.jsp";
     }
 
     @RequestMapping(value = "weather-wind",method = RequestMethod.GET)
         public String getWind(@ModelAttribute User user, Model model){
-//    for(User u:repository.findAll()){
-//        if(u.getId()==user.getId()){
+    for(User u:repository.findAll()){
+        if(u.getId()==user.getId()){
         WeatherCon weatherCon=new WeatherCon();
         model.addAttribute("weather",weatherCon.getWind() );
+
+
         return "CurrentWeather.jsp";
-//        }
-//    }
-//    rreturn "index.jsp";
+        }
+    }
+    return "index.jsp";
     }
 
     @RequestMapping(value = "weather-sys",method = RequestMethod.GET)
          public String getSys(@ModelAttribute User user, Model model){
-//    for(User u:repository.findAll()){
-//        if(u.getId()==user.getId()){
+    for(User u:repository.findAll()){
+        if(u.getId()==user.getId()){
         WeatherCon weatherCon=new WeatherCon();
         model.addAttribute("weather",weatherCon.getSys() );
         return "CurrentWeather.jsp";
-//        }
-//    }
-//    rreturn "index.jsp";
+        }
+    }
+    return "index.jsp";
     }
 
     @RequestMapping(value = "index-newUser",method = RequestMethod.GET)

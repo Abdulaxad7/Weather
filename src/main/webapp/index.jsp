@@ -25,9 +25,24 @@
 </head>
 <body style="background-color:lightcyan">
 
-<form action="logged-in.jsp">
-    <input value="name">
-    <input type="submit">
+<form action="login" method="get">
+    <table>
+        <tr>
+<td>
+    <input type="text" placeholder="Name" name="name">
+</td>
+        </tr>
+        <tr>
+            <td>
+    <input type="password" placeholder="Password" name="password">
+            </td>
+        </tr>
+        <tr>
+            <td>
+   <center> <input type="submit" value="Log in"></center>
+            </td>
+        </tr>
+    </table>
 
 </form>
 
